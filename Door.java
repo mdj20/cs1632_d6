@@ -24,6 +24,8 @@ public class Door extends Attribute {
 		_room0 = room0;
 		_room1 = room1;
 		_direction = direction;
+		_room0.add(this);
+		_room1.add(this);
 	}
 	
 	// returns the room linked to source, by the door, if locked will return source door.

@@ -44,10 +44,9 @@ public class Room extends Attribute {
 		return _chests;
 	}
 	
-	public ArrayList<Container> coontainers(){
+	public ArrayList<Container> containers(){
 		return _containers;
 	}
-	
 	public ArrayList<Door> doors(){
 		return _doors;
 	}

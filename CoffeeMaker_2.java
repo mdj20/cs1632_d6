@@ -6,36 +6,22 @@ public class CoffeeMaker_2 {
 	
 	public static void main(String args[]){
 		
+		ArrayList<Room> world = new ArrayList<Room>();
+		
+		Room room0 = new Room("South Room","Dark room with a sign that says south");
+		Room room1 = new Room("Center Room","Dimly lit room");
+		Room room2 = new Room("North Room","Light room with a sign that says North");
+		Room roomE = new Room("East Room","Yellow room with a sign that says East");
+		Room roomW = new Room("West Room","Green room with a sign that says West");
 		
 		
-		ArrayList<Item> items = new ArrayList<Item>();
-		
-		Item red = new Item("Red Key","Red Key");
-		Item black = new Item("Black key", "Black key");
-		
-		Chest woodenChest = new Chest("Wooden Chest","closed","open");
-		
-		woodenChest.lock(black, red);
-		
-		System.out.println(woodenChest.locked());
-		System.out.println(woodenChest.isKey(red));
-		
-		System.out.println(woodenChest.name());
-		
-		Item back = woodenChest.open(red);
+		new Door("Yellow door","Yellow door, made of Heavy Oak",room1,room0,1);
+		new Door("Green door","Green door, made of Heavy Oak",room1,room2,0);
+		new Door("Red door","Red door, made of Heavy Oak",room1,roomE,2);
+		new Door("Black door","Black door, made of Heavy Oak",room1,roomW,3);
 		
 		
-		System.out.println(woodenChest.name());
 		
-		
-		System.out.println(woodenChest.open(black));
-		
-		
-		System.out.println(back.name());
-		
-		ArrayList<Attribute> test = new ArrayList<Attribute>();
-		test.add(woodenChest);
-		System.out.println(test.size());
 		
 	}
 	
