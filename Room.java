@@ -1,51 +1,56 @@
 import java.util.ArrayList;
 
 
-public class Room {
+public class Room extends Attribute {
 
-	String _name;
-	String _description;
-	ArrayList< Attribute > _attributes;
-	ArrayList< Chest > _chests;
+	private String _name;
+	private String _description;
+	private ArrayList< Attribute > _attributes;
+	private ArrayList< Chest > _chests;
+	private ArrayList< Container > _containers;
+	private ArrayList< Door > _doors;
 	
 	Room( String name , String description ){
 		
-		_name = name;
-		_description = description;
+		super(name,description);
+		_attributes= new ArrayList< Attribute >();
+		_chests= new ArrayList< Chest > ();
+		_containers= new ArrayList< Container >(); 
+		_doors= new ArrayList< Door > ();
 		
 	}
 	
-	public void addExit(){
-		
-	}
+	/*
+	 *  following methods add objects to room;
+	 */
 	
-//	public Attribute removeAttribute( Attribute a ){
-		
-		//if ( _attribute != null &&   )
-		
-		
-		
-		
-		
-	//}
-	
-	
-	
-	public void addAttribute( Attribute a){
-		
-		if ( _attributes == null)
-			 _attributes = new ArrayList<Attribute>();
-		 
+	public void add(Attribute a){
 		_attributes.add(a);
-		
+	}
+	public void add(Chest door){
+		_chests.add(door);
+	}
+	public void add(Container c){
+		_containers.add(c);
+	}
+	public void add(Door door){
+		_doors.add(door);
 	}
 	
+	public ArrayList<Attribute> attributes(){
+		return _attributes;
+	}
+	public ArrayList<Chest> chests(){
+		return _chests;
+	}
 	
+	public ArrayList<Container> coontainers(){
+		return _containers;
+	}
 	
-	
-	
-	
-	
+	public ArrayList<Door> doors(){
+		return _doors;
+	}
 	
 	
 }
