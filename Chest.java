@@ -3,13 +3,15 @@ public class Chest extends Attribute {
 
 	private Item _key;
 	private Item _content;
-	boolean locked;
+	private String _altDescription;
+	private boolean locked;
 	
 
 	Chest(String name, String description, String description2){
 		
-		super(name,description,description2);
-		locked = false;
+		super(name,description);
+		
+		_altDescription = description2;
 		
 	}
 	
@@ -17,24 +19,33 @@ public class Chest extends Attribute {
 		
 		_content = content;
 		_key = key;
-		locked = true;
-		
+
 	}
 	
-	
-	public Item open(Item key){
+	@Override
+	public String description(){
 		
-		Item value = key;
+		String value = super._description;
 		
-		if ( locked == true && key.equals(_key) ){
-						
-					swapDescription();
-					value = _content;
-					
+		if (!locked){
+			value = _altDescription;
 		}
 		
 		return value;
-					
+		
+	}
+	
+
+	
+	public Item open(Item key){
+		
+		if ( locked && key.equals(_key) ){
+			return _content;
+		}
+		else{
+			return null;
+		}
+							
 	}
 	
 }

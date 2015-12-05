@@ -5,8 +5,8 @@ public class Room {
 
 	String _name;
 	String _description;
-	ArrayList<Attribute> _attributes;
-	ArrayList<Chest> _chests;
+	ArrayList< Attribute > _attributes;
+	ArrayList< Chest > _chests;
 	
 	Room( String name , String description ){
 		
@@ -19,15 +19,15 @@ public class Room {
 		
 	}
 	
-	public Attribute removeAttribute( Attribute a ){
+//	public Attribute removeAttribute( Attribute a ){
 		
-		if ( _attribute != null &&   )
-		
-		
+		//if ( _attribute != null &&   )
 		
 		
 		
-	}
+		
+		
+	//}
 	
 	
 	
