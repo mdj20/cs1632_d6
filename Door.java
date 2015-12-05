@@ -17,7 +17,7 @@ public class Door extends Attribute {
 	private final static int NORTH = 0 ; 
 	private	final static int SOUTH = 1 ;
 	private final static int EAST  = 2 ;
-	private final static int WEST = 4 ;
+	private final static int WEST = 3 ;
 	private final static int INVALID = -1;
 	
 	public static String directions[] = {"north","south","east","west"}; // standard strings for direction
