@@ -14,11 +14,11 @@ public class Door extends Attribute {
 	private Room _room1;		// linked room
 	private int _direction;		// direction from room0 direction
 	
-	private static int NORTH = 0 ; 
-	private	static int SOUTH = 1 ;
-	private static int EAST  = 2 ;
-	private static int WEST = 4 ;
-	private static int INVALID = -1;
+	private final static int NORTH = 0 ; 
+	private	final static int SOUTH = 1 ;
+	private final static int EAST  = 2 ;
+	private final static int WEST = 4 ;
+	private final static int INVALID = -1;
 	
 	public static String directions[] = {"north","south","east","west"}; // standard strings for direction
 
@@ -88,24 +88,26 @@ public class Door extends Attribute {
 	// Data field accessing methods 
 	public boolean locked(){return _locked;}
 	
-	// returns the direction code that this door will represnt, for the room passed in
+	// returns the direction code that this door will represent, for the room passed in.
 	public int direction(Room in){
 	
-		int value = -1;
+		int value = INVALID;
 		
+		// if room passed in is the room that _direction represents, then simply pass back the representation
 		if (in.equals(_room0)){
 			value = _direction;
 		}
+		// if the room is the opposite room, then return the opposite direction (If north then return south etc.)
 		else if (in.equals(_room1)){
 			
 			switch (_direction){
-				case 0: value = 1;
+				case NORTH: value = SOUTH;
 					break;
-				case 1: value = 0;
+				case SOUTH: value = NORTH;
 					break;
-				case 2: value = 3;
+				case EAST : value = WEST;
 					break;
-				case 3: value = 4;
+				case WEST: value = EAST;
 			}
 		}
 		
