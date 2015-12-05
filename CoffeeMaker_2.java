@@ -21,9 +21,7 @@ public class CoffeeMaker_2 {
 		new Door("Red door","Red door, made of Heavy Oak",room1,roomE,2);
 		new Door("Black door","Black door, made of Heavy Oak",room1,roomW,3);
 		
-		
-		
-		
+				
 		Scanner scanner = new Scanner(System.in);
 		
 		

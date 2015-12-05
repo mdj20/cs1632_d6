@@ -14,6 +14,11 @@ public class Door extends Attribute {
 	private Room _room1;		// linked room
 	private int _direction;		// direction from room0 direction
 	
+	private static int NORTH = 0 ; 
+	private	static int SOUTH = 1 ;
+	private static int EAST  = 2 ;
+	private static int WEST = 4 ;
+	
 	public static String directions[] = {"north","south","east","west"}; // standard strings for direction
 
 	/*  Contructor argument definitions:

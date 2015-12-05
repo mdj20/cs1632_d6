@@ -30,10 +30,8 @@ public class World {
 		
 	}
 	
-	public boolean move( Door d ){
+	public boolean move( int  ){
 		boolean value = false;
-	
-		
 		
 			for (Door door : _currentDoors){
 			
@@ -49,6 +47,10 @@ public class World {
 	public String look(String target){
 		
 	}
+	
+	
+	
+	
 	
 	public ArrayList<Door> doors(){ return _currentDoors;}
 	public ArrayList<Chest> chests(){ return _currentChests;}
