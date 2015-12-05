@@ -18,6 +18,7 @@ public class Door extends Attribute {
 	private	static int SOUTH = 1 ;
 	private static int EAST  = 2 ;
 	private static int WEST = 4 ;
+	private static int INVALID = -1;
 	
 	public static String directions[] = {"north","south","east","west"}; // standard strings for direction
 
@@ -28,7 +29,6 @@ public class Door extends Attribute {
 	 *  room0 : first room
 	 *  room1 : second room
 	 *  direction : the direction of the door from room0's perspective
-	 *   
 	 */
 	
 	Door(String name, String description, Room room0, Room room1, int direction) {
@@ -88,8 +88,32 @@ public class Door extends Attribute {
 	// Data field accessing methods 
 	public boolean locked(){return _locked;}
 	
-	// 
-	public String direction(){ return directions[_direction]; }
+	// returns the direction code that this door will represnt, for the room passed in
+	public int direction(Room in){
+	
+		int value = -1;
+		
+		if (in.equals(_room0)){
+			value = _direction;
+		}
+		else if (in.equals(_room1)){
+			
+			switch (_direction){
+				case 0: value = 1;
+					break;
+				case 1: value = 0;
+					break;
+				case 2: value = 3;
+					break;
+				case 3: value = 4;
+			}
+		}
+		
+		return value ;
+	
+	}
+	
+
 	
 
 }
