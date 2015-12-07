@@ -16,7 +16,7 @@ public class CoffeeMaker_2 {
 		Room roomW = new Room("West Room","Green room with a sign that says West");
 		
 		
-		new Door("Yellow door","Yellow door, made of Heavy Oak",room1,room0,1);
+		Door lockedDoor = new Door("Yellow door","Yellow door, made of Heavy Oak",room1,room0,1);
 		new Door("Green door","Green door, made of Heavy Oak",room1,room2,0);
 		new Door("Red door","Red door, made of Heavy Oak",room1,roomE,2);
 		new Door("Black door","Black door, made of Heavy Oak",room1,roomW,3);
@@ -31,10 +31,15 @@ public class CoffeeMaker_2 {
 		Container pot = new Container("pot","small but deep brown pot");
 		pot.hide(key);
 		room1.add(pot);
+		lockedDoor.lock(key);
+		
 		World world = new World(list, room1);
 		
-		//System.out.println(world.move(1));
+		
+		System.out.println(world.move(1));
 		System.out.println(world.look("pot"));
+		System.out.println();
+		System.out.println(world.open("Yellow door"));
 		
 		
 		Scanner scanner = new Scanner(System.in);

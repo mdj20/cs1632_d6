@@ -128,6 +128,7 @@ public class World {
 					_sb.append("This is already unlocked.");
 				}
 				
+				value = _sb.toString();
 			}
 		}
 		
@@ -148,9 +149,10 @@ public class World {
 				else {
 					_sb.append("This is already unlocked.");
 				}		
+				value = _sb.toString();
 			}
 		}
-		value = _sb.toString();
+
 		return value;
 	}
 	
