@@ -11,12 +11,16 @@ public class World {
 	private ArrayList< Chest > _currentChests;
 	private ArrayList< Container > _currentContainers;
 	private ArrayList< Attribute > _currentAttributes;
+	private ArrayList< Item > _winItems;
 	
 	World( ArrayList<Room> world, Room start ){
+		
 			_world = world;
 			_currentLocation = start;
 			setUpRoom();
+			_winItems = new ArrayList<Item>();
 			_inventory = new HashSet<Item>();
+			
 	}
 	
 	// gathers _currentLocation information such as doors Item and all attributes and ready them
@@ -33,8 +37,6 @@ public class World {
 	public String move( int d ){
 		
 		String value = "You can't go there";
-		
-		
 			// checks if door in that direction exists
 			for (Door door : _currentDoors){
 				
@@ -63,10 +65,10 @@ public class World {
 		
 		// search for target match
 		ArrayList<Attribute> nonContainers = new ArrayList<Attribute>();
-		nonContainers.addAll(_currentChests);
-		nonContainers.addAll(_currentDoors);
-		nonContainers.addAll(_currentAttributes);
-		nonContainers.addAll(_inventory);
+		nonContainers.addAll( _currentChests );
+		nonContainers.addAll( _currentDoors );
+		nonContainers.addAll( _currentAttributes );
+		nonContainers.addAll( _inventory );
 		
 		for (Attribute a : nonContainers){
 			if(target.equals(a.name())){
@@ -158,7 +160,17 @@ public class World {
 		return sb.toString();
 	}
 	
+	public int addWinRequirement(Item item){
+		_winItems.add(item);
+		return _winItems.size();
+	}
 	
+	// returns true if player has all items required for winning
+	public boolean canDrink(){
+		return _inventory.containsAll(_winItems);
+	}
+	
+	public ArrayList<Item> winItems(){ return _winItems;}
 	public ArrayList<Door> doors(){ return _currentDoors;}
 	public ArrayList<Chest> chests(){ return _currentChests;}
 	public ArrayList<Container> containers(){ return _currentContainers;}

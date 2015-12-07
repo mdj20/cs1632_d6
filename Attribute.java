@@ -4,8 +4,8 @@ public class Attribute {
 	/*
 	 *  Base class for the rest of the building blocks of the game
 	 *  
-	 *  any Attribute has a name: a short description and a 
-	 *  					description a more in depth description
+	 *  any Attribute has a name: a short description and the id of attribute
+	 *  					description: a more in depth description
 	 */
 	
 	

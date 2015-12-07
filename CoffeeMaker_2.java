@@ -55,7 +55,7 @@ public class CoffeeMaker_2 {
 		System.out.println(world.open("Metal Chest"));
 		
 		Scanner scanner = new Scanner(System.in);
-		
+	
 		
 		
 	}
