@@ -33,25 +33,29 @@ public class CoffeeMaker_2 {
 		room1.add(pot);
 		lockedDoor.lock(key);
 		
+		Chest chest = new Chest("Metal Chest","Locked Metal Chest","Metal Chest Unlocked");
+		Item coffee = new Item("Coffee","Craffe of steaming black coffee");
+		
+		chest.lock(coffee, key);
+		
 		World world = new World(list, room1);
 		
+		room2.add(chest);
 		
 		System.out.println(world.move(1));
 		System.out.println(world.look("pot"));
 		System.out.println();
 		System.out.println(world.open("Yellow door"));
+		System.out.println(world.move(0));
 		
+	
+		
+		System.out.println(world.inventory());
+		
+		System.out.println(world.open("Metal Chest"));
 		
 		Scanner scanner = new Scanner(System.in);
 		
-		/*
-		System.out.println("prompt: ");
-		String input = scanner.nextLine();
-		
-		for (String s : input.split(" ")){
-			System.out.println(s);
-		}
-		*/
 		
 		
 	}

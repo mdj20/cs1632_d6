@@ -27,8 +27,8 @@ public class Room extends Attribute {
 	public void add(Attribute a){
 		_attributes.add(a);
 	}
-	public void add(Chest door){
-		_chests.add(door);
+	public void add(Chest chest){
+		_chests.add(chest);
 	}
 	public void add(Container c){
 		_containers.add(c);

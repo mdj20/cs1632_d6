@@ -12,17 +12,11 @@ public class World {
 	private ArrayList< Container > _currentContainers;
 	private ArrayList< Attribute > _currentAttributes;
 	
-	private StringBuilder _sb;
-	 
-	
 	World( ArrayList<Room> world, Room start ){
-		
 			_world = world;
 			_currentLocation = start;
 			setUpRoom();
 			_inventory = new HashSet<Item>();
-			_sb = new StringBuilder();
-			
 	}
 	
 	// gathers _currentLocation information such as doors Item and all attributes and ready them
@@ -49,10 +43,10 @@ public class World {
 					_currentLocation = door.enter(_currentLocation);
 					setUpRoom();
 					
-					_sb = new StringBuilder();
-					_sb.append("You enter ");
-					_sb.append(_currentLocation.name());
-					value = _sb.toString();
+					StringBuilder sb = new StringBuilder();
+					sb.append("You enter ");
+					sb.append(_currentLocation.name());
+					value = sb.toString();
 					break; // break for
 				}
 					
@@ -85,15 +79,15 @@ public class World {
 			
 			if (target.equals(c.name())){
 				
-				_sb = new StringBuilder();
+				StringBuilder sb = new StringBuilder();
 			
-				_sb.append(c.description());
+				sb.append(c.description());
 				
 				if (c.contains()){
 					Item item = c.get();
 					_inventory.add(item);
-					_sb.append("\nYou found a "+item.name());
-					value = _sb.toString();
+					sb.append("\nYou found a "+item.name());
+					value = sb.toString();
 				}
 				break;
 			}
@@ -111,24 +105,24 @@ public class World {
 		for (Door d : _currentDoors){
 			if (target.equals(d.name())){ // if door name equals target 
 				
-				_sb = new StringBuilder(); // create new stringBuilder 
+				StringBuilder sb = new StringBuilder(); // create new stringBuilder 
 				
 				if(d.locked() && _inventory.contains(d.key()) ){  // unlock
 					
 					d.unlock(d.key());
-					_sb.append("You have opened the "+d.description()); // create message
+					sb.append("You have opened the "+d.description()); // create message
 						
 				}
 				else if(d.locked() && !_inventory.contains(d.key())){ // doesnt have the key
 					
-					_sb.append("You dont have the correct item"); 
+					sb.append("You dont have the correct item"); 
 					
 				}
 				else {
-					_sb.append("This is already unlocked.");
+					sb.append("This is already unlocked.");
 				}
 				
-				value = _sb.toString();
+				value = sb.toString();
 			}
 		}
 		
@@ -136,26 +130,33 @@ public class World {
 		for (Chest c : _currentChests){
 			if (target.equals(c.name())){
 				
-				_sb = new StringBuilder();
+				StringBuilder sb = new StringBuilder();
 				
 				if(c.locked() && _inventory.contains(c.key()) ){
 					Item item = c.open(c.key());
 					_inventory.add(item);
-					_sb.append("You have opened the "+c.description()+"\n You found "+item.name());	
+					 sb.append("You have opened the "+c.description()+"\nYou found "+item.name());	
 				}
 				else if(c.locked() && !_inventory.contains(c.key())){
-					_sb.append("You dont have the correct item");	
+					sb.append("You dont have the correct item");	
 				}
 				else {
-					_sb.append("This is already unlocked.");
+					sb.append("This is already unlocked.");
 				}		
-				value = _sb.toString();
+				value = sb.toString();
 			}
 		}
 
 		return value;
 	}
 	
+	public String inventory(){
+		StringBuilder sb = new StringBuilder("Inventory:\n");
+		for (Item i : _inventory){
+			sb.append(i.name()+"\n");
+		}
+		return sb.toString();
+	}
 	
 	
 	public ArrayList<Door> doors(){ return _currentDoors;}
