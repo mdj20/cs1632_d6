@@ -116,6 +116,6 @@ public class Door extends Attribute {
 	}
 	
 
-	
+	public Item key(){ return _key;}
 
 }

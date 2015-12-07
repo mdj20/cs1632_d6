@@ -7,7 +7,7 @@ public class CoffeeMaker_2 {
 	
 	public static void main(String args[]){
 		
-		ArrayList<Room> world = new ArrayList<Room>();
+		ArrayList<Room> list = new ArrayList<Room>();
 		
 		Room room0 = new Room("South Room","Dark room with a sign that says south");
 		Room room1 = new Room("Center Room","Dimly lit room");
@@ -21,17 +21,27 @@ public class CoffeeMaker_2 {
 		new Door("Red door","Red door, made of Heavy Oak",room1,roomE,2);
 		new Door("Black door","Black door, made of Heavy Oak",room1,roomW,3);
 		
-				
+		list.add(room0);
+		list.add(room1);
+		list.add(room2);
+		list.add(roomE);
+		list.add(roomW);
+		
+		World world = new World(list, room1);
+		
+		System.out.println(world.move(1));
+		
+		
 		Scanner scanner = new Scanner(System.in);
 		
-		
+		/*
 		System.out.println("prompt: ");
 		String input = scanner.nextLine();
 		
 		for (String s : input.split(" ")){
 			System.out.println(s);
 		}
-		
+		*/
 		
 		
 	}
