@@ -92,7 +92,7 @@ public class World {
 				if (c.contains()){
 					Item item = c.get();
 					_inventory.add(item);
-					_sb.append("\nYou found a"+item.name());
+					_sb.append("\nYou found a "+item.name());
 					value = _sb.toString();
 				}
 				break;

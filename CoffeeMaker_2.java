@@ -27,9 +27,14 @@ public class CoffeeMaker_2 {
 		list.add(roomE);
 		list.add(roomW);
 		
+		Item key = new Item("red key","red key");
+		Container pot = new Container("pot","small but deep brown pot");
+		pot.hide(key);
+		room1.add(pot);
 		World world = new World(list, room1);
 		
-		System.out.println(world.move(1));
+		//System.out.println(world.move(1));
+		System.out.println(world.look("pot"));
 		
 		
 		Scanner scanner = new Scanner(System.in);
