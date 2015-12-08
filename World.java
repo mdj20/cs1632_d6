@@ -45,8 +45,7 @@ public class World {
 					_currentLocation = door.enter(_currentLocation);
 					setUpRoom();
 					
-					StringBuilder sb = new StringBuilder();
-					sb.append("You enter ");
+					StringBuilder sb = new StringBuilder("You enter ");
 					sb.append(_currentLocation.name());
 					value = sb.toString();
 					break; // break for
@@ -168,6 +167,37 @@ public class World {
 	// returns true if player has all items required for winning
 	public boolean canDrink(){
 		return _inventory.containsAll(_winItems);
+	}
+	
+	// drink command returns appropriate string depending on requirements 
+	public String drink(){
+		
+		if (canDrink()){
+			return "You have succeded in your quest!";
+		}
+		else{
+			return "You do not have the correct Ingredients! ";
+		}
+		
+	}
+	
+	// will return a string of all the names of the attributes inthe current room
+	// each on it's own line.
+	public String roomAttributes(){
+		
+		StringBuilder sb = new StringBuilder();
+		
+		ArrayList<Attribute> attributes = new ArrayList<Attribute>();
+		attributes.addAll(_currentAttributes);
+		attributes.addAll(_currentChests);
+		attributes.addAll(_currentContainers);
+		
+		for (Attribute a : attributes){
+			sb.append(a+"\n");
+		}
+		
+		return sb.toString();
+		
 	}
 	
 	public ArrayList<Item> winItems(){ return _winItems;}
