@@ -62,12 +62,12 @@ public class Hero {
 		
 		// command branch
 		
-		if(command.equalsIgnoreCase("look")){
-			if (!target.equalsIgnoreCase("")){
+		if(command.equalsIgnoreCase("look")){  //look branch
+			if (!target.equalsIgnoreCase("")){ // without target looks at room
 				response = _world.look(target);
 			}
 			else{ 
-				response = _world.look();
+				response = _world.look(); // with target
 			}
 		}
 		else if( command.equalsIgnoreCase("open") ){

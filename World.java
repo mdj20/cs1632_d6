@@ -204,6 +204,7 @@ public class World {
 		
 	}
 	
+	//data access 
 	public String currentLocationName(){return _currentLocation.name();}
 	public Room location(){return _currentLocation;}
 	public ArrayList<Item> winItems(){ return _winItems;}
@@ -211,4 +212,5 @@ public class World {
 	public ArrayList<Chest> chests(){ return _currentChests;}
 	public ArrayList<Container> containers(){ return _currentContainers;}
 	public ArrayList<Attribute> attributes(){ return _currentAttributes;}
+	public HashSet<Item> getInventorySet(){ return _inventory;}
 }

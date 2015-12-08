@@ -25,7 +25,6 @@ public class Container extends Attribute {
 	public boolean hide( Item item ){
 		boolean value = false;
 		if ( !_contains ){
-			System.out.println("Smoke test:"+item.name());
 			_contents = item;
 			_contains = true;
 			value = true;
