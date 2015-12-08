@@ -67,9 +67,17 @@ public class Hero {
 				response = _world.look();
 			}
 		}
-		else if( command.equalsIgnoreCase("") )
+		else if( command.equalsIgnoreCase("open") ){
+			response = _world.open(target);
+		}
 		else if( command.equalsIgnoreCase("move")){
+			response = moveHelper(target);
+		}
+		else if (command.equalsIgnoreCase("drink")){
 			
+		}
+		else if ( command.equalsIgnoreCase("help")){
+			help();
 		}
 		
 		
@@ -106,7 +114,24 @@ public class Hero {
 		return value;
 	}
 	
-	
+	private String moveHelper(String target){
+		
+		String value = ""; 
+		
+		if (target.equalsIgnoreCase("north")){
+			value = _world.move(Door.NORTH);
+		}
+		else if (target.equalsIgnoreCase("south")) {
+			value = _world.move(Door.SOUTH);
+		}
+		else if (target.equalsIgnoreCase("east")) {
+			value = _world.move(Door.EAST);
+		}
+		else if (target.equalsIgnoreCase("west")) {
+			value = _world.move(Door.WEST);
+		}
+		return value;
+	}
 	
 	
 	

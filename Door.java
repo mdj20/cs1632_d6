@@ -14,11 +14,11 @@ public class Door extends Attribute {
 	private Room _room1;		// linked room
 	private int _direction;		// direction from room0 direction
 	
-	private final static int NORTH = 0 ; 
-	private	final static int SOUTH = 1 ;
-	private final static int EAST  = 2 ;
-	private final static int WEST = 3 ;
-	private final static int INVALID = -1;
+	public final static int NORTH = 0 ; 
+	public	final static int SOUTH = 1 ;
+	public final static int EAST  = 2 ;
+	public final static int WEST = 3 ;
+	public final static int INVALID = -1;
 	
 	public static String directions[] = {"north","south","east","west"}; // standard strings for direction
 
