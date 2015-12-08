@@ -115,6 +115,7 @@ public class Door extends Attribute {
 	
 	}
 	
+	//public String direction(int in){return directions
 
 	public Item key(){ return _key;}
 

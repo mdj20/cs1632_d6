@@ -17,6 +17,7 @@ public class Container extends Attribute {
 	// Constructor that hides an item inside
 	Container(String name, String description, Item item) {
 		super(name, description);
+		_contains = false;
 		_contains = hide(item);
 	}
 
@@ -24,8 +25,10 @@ public class Container extends Attribute {
 	public boolean hide( Item item ){
 		boolean value = false;
 		if ( !_contains ){
+			System.out.println("Smoke test:"+item.name());
 			_contents = item;
 			_contains = true;
+			value = true;
 		}
 		return value;
 	}

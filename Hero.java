@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /*
@@ -47,9 +48,11 @@ public class Hero {
 		String response = "";
 		
 		// print out room name and attribute names
+		System.out.println("\n---------------------------------------"); // divide line
 		System.out.println("You are in "+_world.currentLocationName());
 		System.out.println("You See:\n"+_world.roomAttributes());
 		
+		System.out.println(getExitString());
 		
 		line = promptString("Command: "); // prompt user input
 		String split[] = line.split(" ",2); // split line into command and target
@@ -70,12 +73,15 @@ public class Hero {
 		else if( command.equalsIgnoreCase("open") ){
 			response = _world.open(target);
 		}
+		else if( command.equalsIgnoreCase("inv")){
+			response = _world.inventory();
+		}
 		else if( command.equalsIgnoreCase("move")){
 			response = moveHelper(target);
 		}
 		else if (command.equalsIgnoreCase("drink")){
 			
-			value = _world.canDrink();
+			value = false;
 			response = _world.drink();
 			
 			
@@ -102,8 +108,10 @@ public class Hero {
 							"look:\nwill give greater detail to target and look for (command without target will look at the room).\n\n" +
 							"move:\nmove hero in the direction of target (Target must specify direction: north, south, east or west).\n\n" +
 							"open:\nwill open locked chest or door. must have key.\n\n" +
-							"drink:\nWill attempt to drink the quest beverage. \n\n" +
-							"help:\nWill display this message."
+							"drink:\nWill attempt to drink the quest beverage. \n\n"
+							+ "inv:\nDisplay inventory\n\n" +
+							"help:\nWill display this message.\n\n"
+							+ "quit:\nWill quit the game"
 				); 
 	}
 	
@@ -144,7 +152,24 @@ public class Hero {
 		return value;
 	}
 	
-	
+	private String getExitString(){
+		ArrayList<Door> doors = _world.doors();
+		
+		StringBuilder sb = new StringBuilder("Exits:\n");
+		
+		for (Door d : doors){
+			sb.append(Door.directions[d.direction(_world.location())]+": "+d.name());
+			
+			if (d.locked()){
+				sb.append(" ( locked )");
+			}
+			
+			sb.append("\n");
+			
+		}
+		
+		return sb.toString();
+	}
 	
 	
 	

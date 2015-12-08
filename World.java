@@ -70,7 +70,7 @@ public class World {
 		nonContainers.addAll( _inventory );
 		
 		for (Attribute a : nonContainers){
-			if(target.equals(a.name())){
+			if(target.equalsIgnoreCase((a.name()))){
 				value = a.description();
 				break;
 			}
@@ -78,18 +78,22 @@ public class World {
 		
 		for (Container c : _currentContainers){
 			
-			if (target.equals(c.name())){
+			if (target.equalsIgnoreCase(c.name())){
+			
+				
 				
 				StringBuilder sb = new StringBuilder();
 			
 				sb.append(c.description());
 				
+				
 				if (c.contains()){
 					Item item = c.get();
 					_inventory.add(item);
 					sb.append("\nYou found a "+item.name());
-					value = sb.toString();
+				
 				}
+				value = sb.toString();
 				break;
 			}
 		}
@@ -104,7 +108,7 @@ public class World {
 		
 		// Check if door is target, and see if unlock is applicable
 		for (Door d : _currentDoors){
-			if (target.equals(d.name())){ // if door name equals target 
+			if (target.equalsIgnoreCase(d.name())){ // if door name equals target 
 				
 				StringBuilder sb = new StringBuilder(); // create new stringBuilder 
 				
@@ -129,7 +133,7 @@ public class World {
 		
 		// check for chest with corect name and open, put item in inventory
 		for (Chest c : _currentChests){
-			if (target.equals(c.name())){
+			if (target.equalsIgnoreCase(c.name())){
 				
 				StringBuilder sb = new StringBuilder();
 				
@@ -176,7 +180,7 @@ public class World {
 			return "You have succeded in your quest!";
 		}
 		else{
-			return "You do not have the correct Ingredients! ";
+			return "You do not have the correct Ingredients!";
 		}
 		
 	}
@@ -201,6 +205,7 @@ public class World {
 	}
 	
 	public String currentLocationName(){return _currentLocation.name();}
+	public Room location(){return _currentLocation;}
 	public ArrayList<Item> winItems(){ return _winItems;}
 	public ArrayList<Door> doors(){ return _currentDoors;}
 	public ArrayList<Chest> chests(){ return _currentChests;}
