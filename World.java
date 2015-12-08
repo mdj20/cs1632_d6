@@ -200,6 +200,7 @@ public class World {
 		
 	}
 	
+	public String currentLocationName(){return _currentLocation.name();}
 	public ArrayList<Item> winItems(){ return _winItems;}
 	public ArrayList<Door> doors(){ return _currentDoors;}
 	public ArrayList<Chest> chests(){ return _currentChests;}

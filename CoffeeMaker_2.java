@@ -56,6 +56,10 @@ public class CoffeeMaker_2 {
 		
 		Scanner scanner = new Scanner(System.in);
 	
+		System.out.println("\n----------------------------------------");
+		
+		Hero hero = new Hero(world);
+		hero.start();
 		
 		
 	}
