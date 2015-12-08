@@ -55,7 +55,7 @@ public class Hero {
 		String split[] = line.split(" ",2); // split line into command and target
 		
 		String command = split[0];
-		String target = (split.length>1)?split[1] : "";
+		String target = (split.length>1)?split[1] : ""; // if there is more than 1 word in line, place the rest of line in target
 		
 		// command branch
 		
@@ -75,14 +75,19 @@ public class Hero {
 		}
 		else if (command.equalsIgnoreCase("drink")){
 			
+			value = _world.canDrink();
+			response = _world.drink();
+			
+			
 		}
 		else if ( command.equalsIgnoreCase("help")){
 			help();
 		}
+		else if (command.equalsIgnoreCase("quit")){
+			value = false;
+		}
 		
-		
-		
-		
+		System.out.println(response);
 		
 		
 		return value;
@@ -102,6 +107,9 @@ public class Hero {
 				); 
 	}
 	
+	
+	
+	// overloaded promptString (below) 
 	private String promptString(){
 		return promptString(null);
 	}
@@ -114,6 +122,9 @@ public class Hero {
 		return value;
 	}
 	
+	
+	// method helps with the move command. 
+	// World.move() arg is int, so this method is called. It converts String to correct int value and passes it into World.move()
 	private String moveHelper(String target){
 		
 		String value = ""; 

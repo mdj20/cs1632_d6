@@ -193,7 +193,7 @@ public class World {
 		attributes.addAll(_currentContainers);
 		
 		for (Attribute a : attributes){
-			sb.append(a+"\n");
+			sb.append(a.name()+"\n");
 		}
 		
 		return sb.toString();

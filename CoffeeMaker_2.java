@@ -70,7 +70,7 @@ public class CoffeeMaker_2 {
 		System.out.println("\n----------------------------------------");
 		
 		Hero hero = new Hero(world);
-		//hero.start();
+		hero.start();
 		
 		
 	}
