@@ -3,14 +3,17 @@ import java.util.HashSet;
 
 public class World {
 
-	private Room _currentLocation;
-	private HashSet< Item > _inventory;
-	private ArrayList< Room > _world;
+	private Room _currentLocation;	// curent room
+	private HashSet< Item > _inventory;  // inventory 
+	private ArrayList< Room > _world;  // list of rooms 
 	
+	// things found in current room, this is updated when the player moves to a diffrent room 
 	private ArrayList< Door > _currentDoors;
 	private ArrayList< Chest > _currentChests;
 	private ArrayList< Container > _currentContainers;
 	private ArrayList< Attribute > _currentAttributes;
+	
+	//
 	private ArrayList< Item > _winItems;
 	
 	World( ArrayList<Room> world, Room start ){
@@ -33,7 +36,7 @@ public class World {
 		
 	}
 	
-	// attmpts to move in the direction passed in.
+	// Attempts to move in the direction passed in.
 	public String move( int d ){
 		
 		String value = "You can't go there";
@@ -69,6 +72,7 @@ public class World {
 		nonContainers.addAll( _currentAttributes );
 		nonContainers.addAll( _inventory );
 		
+		// search for non container target and if found respond with description
 		for (Attribute a : nonContainers){
 			if(target.equalsIgnoreCase((a.name()))){
 				value = a.description();
@@ -76,23 +80,20 @@ public class World {
 			}
 		}
 		
+		// since containers contain items, if target is found, add item to inventory 
 		for (Container c : _currentContainers){
-			
-			if (target.equalsIgnoreCase(c.name())){
-			
-				
-				
+			if (target.equalsIgnoreCase(c.name())){	
 				StringBuilder sb = new StringBuilder();
 			
 				sb.append(c.description());
-				
-				
+		
+				// if it contains item, add to inv
 				if (c.contains()){
 					Item item = c.get();
 					_inventory.add(item);
 					sb.append("\nYou found a "+item.name());
-				
 				}
+				
 				value = sb.toString();
 				break;
 			}
@@ -100,6 +101,7 @@ public class World {
 		return value;
 	}
 	
+	// return description of current location
 	public String look(){return _currentLocation.description();}
 	
 	public String open(String target){
@@ -124,19 +126,20 @@ public class World {
 					
 				}
 				else {
-					sb.append("This is already unlocked.");
+					sb.append("This is already unlocked.");  // doesn't need unlocked  
 				}
 				
 				value = sb.toString();
 			}
 		}
 		
-		// check for chest with corect name and open, put item in inventory
+		// check for chest with correct name and open, put item in inventory if applicable
 		for (Chest c : _currentChests){
 			if (target.equalsIgnoreCase(c.name())){
 				
 				StringBuilder sb = new StringBuilder();
 				
+				// if chest is locked and inventory contains correct key open chest add item to inventory
 				if(c.locked() && _inventory.contains(c.key()) ){
 					Item item = c.open(c.key());
 					_inventory.add(item);
@@ -155,6 +158,8 @@ public class World {
 		return value;
 	}
 	
+	
+	// creates/returns string inventory 
 	public String inventory(){
 		StringBuilder sb = new StringBuilder("Inventory:\n");
 		for (Item i : _inventory){
@@ -163,6 +168,7 @@ public class World {
 		return sb.toString();
 	}
 	
+	// adds win game requirement
 	public int addWinRequirement(Item item){
 		_winItems.add(item);
 		return _winItems.size();
