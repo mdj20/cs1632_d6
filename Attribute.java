@@ -21,7 +21,6 @@ public class Attribute {
 	
 	// data field access methods 
 	public String name(){ return _name; }
-	
 	public String description(){ return _description; }
 	
 

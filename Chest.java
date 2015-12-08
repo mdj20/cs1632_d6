@@ -1,33 +1,34 @@
 
 public class Chest extends Attribute {
 
-	private Item _key;
-	private Item _content;
-	private String _altDescription;
-	private boolean _locked;
+	private Item _key;	// item required to unlock
+	private Item _content; // item stored
+	private String _altDescription; // description that is given after chestis opened
+	private boolean _locked; // locked booelan 
 	
 	Chest(String name, String description, String description2){
-		
 		super(name,description);
 		_altDescription = description2;
 		
 	}
 	
+	// stores item, and sets boolean _contains to true
 	public boolean lock(Item content, Item key){
-		
 		boolean value = false;
-		
 		if (!_locked){
 			_content = content;
 			_key = key;
 			_locked = true;
 			value = true;
 		}
-		
 		return value;
 	}
 	
-	@Override
+	
+	// This method will return one of the descriptions, 
+	// the primary description when it is locked and alternate after it is opened
+	
+	@Override   
 	public String description(){
 		
 		String value = super._description;
@@ -40,7 +41,7 @@ public class Chest extends Attribute {
 		
 	}
 
-	
+	// will take item (key) and return stored Item. flips booelan to false
 	public Item open(Item key){
 		
 		if ( _locked && key.equals(_key) ){
@@ -52,10 +53,10 @@ public class Chest extends Attribute {
 							
 	}
 	
-	public boolean locked(){ return _locked ; }
+	public boolean locked(){ return _locked ; }  // data access
+	public Item key(){ return _key; } // data access
 	
-	public Item key(){ return _key; }
-	
+	// checks weather the item provided is key
 	public boolean isKey(Item key){ 
 		
 		// check that _key is initialized

@@ -2,7 +2,7 @@
 public class Container extends Attribute {
 	
 	/*
-	 * a container is an attribute that van hold an item
+	 * a container is an attribute that can hold an item
 	 */
 
 	private boolean _contains;	// boolean stating that it contains something
@@ -21,7 +21,7 @@ public class Container extends Attribute {
 		_contains = hide(item);
 	}
 
-	// hides item and 
+	// hides item and sets boolean to true
 	public boolean hide( Item item ){
 		boolean value = false;
 		if ( !_contains ){
@@ -32,6 +32,7 @@ public class Container extends Attribute {
 		return value;
 	}
 	
+	// returns item and sets boolean to false
 	public Item get(){
 		
 		Item value = null;
@@ -42,7 +43,7 @@ public class Container extends Attribute {
 		return value;
 		
 	}
-	
+	// data access
 	public boolean contains(){ return _contains ; }
 	
 }

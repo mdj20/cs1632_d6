@@ -22,6 +22,8 @@ public class Hero {
 	
 	// Start's game
 	public void start(){
+		
+		// init scanner
 		scanner = new Scanner(System.in);
 	
 		// game start message
@@ -30,15 +32,10 @@ public class Hero {
 		help(); // display help string
 		boolean game = true; // game toggle
 
-		
+		// game loop
 		while (game){
-		
-			game = gameLoop();
-			
+			game = gameLoop();	
 		}
-		
-		
-		
 	}
 	
 	private boolean gameLoop(){
@@ -52,50 +49,49 @@ public class Hero {
 		System.out.println("You are in "+_world.currentLocationName());
 		System.out.println("You See:\n"+_world.roomAttributes());
 		
+		//print exits
 		System.out.println(getExitString());
 		
 		line = promptString("Command: "); // prompt user input
 		String split[] = line.split(" ",2); // split line into command and target
 		
+		// get command
 		String command = split[0];
 		String target = (split.length>1)?split[1] : ""; // if there is more than 1 word in line, place the rest of line in target
 		
-		// command branch
-		
+		// command branching code 
 		if(command.equalsIgnoreCase("look")){  //look branch
-			if (!target.equalsIgnoreCase("")){ // without target looks at room
+			if (!target.equalsIgnoreCase("")){ // without specified target it looks at room
 				response = _world.look(target);
 			}
 			else{ 
 				response = _world.look(); // with target
 			}
 		}
-		else if( command.equalsIgnoreCase("open") ){
+		else if( command.equalsIgnoreCase("open") ){  //open
 			response = _world.open(target);
 		}
-		else if( command.equalsIgnoreCase("inv")){
+		else if( command.equalsIgnoreCase("inv")){ // show inventory
 			response = _world.inventory();
 		}
-		else if( command.equalsIgnoreCase("move")){
+		else if( command.equalsIgnoreCase("move")){  // move in direction
 			response = moveHelper(target);
 		}
-		else if (command.equalsIgnoreCase("drink")){
-			
+		else if (command.equalsIgnoreCase("drink")){   // drink attempt
 			value = false;
 			response = _world.drink();
-			
-			
 		}
-		else if ( command.equalsIgnoreCase("help")){
+		else if ( command.equalsIgnoreCase("help")){  // help
 			help();
 		}
-		else if (command.equalsIgnoreCase("quit")){
+		else if (command.equalsIgnoreCase("quit")){ // quit game
 			value = false;
 		}
 		
+		// print response string to user
 		System.out.println(response);
 		
-		
+		// return to game loop
 		return value;
 	}
 	
@@ -122,6 +118,7 @@ public class Hero {
 		return promptString(null);
 	}
 	
+	// prompt user for command , print string given by String prompt 
 	private String promptString(String prompt){
 		if (prompt != null){
 			System.out.println(prompt);
@@ -152,6 +149,8 @@ public class Hero {
 		return value;
 	}
 	
+	
+	// builds a string that describes the exits
 	private String getExitString(){
 		ArrayList<Door> doors = _world.doors();
 		

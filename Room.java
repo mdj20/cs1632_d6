@@ -3,12 +3,11 @@ import java.util.ArrayList;
 
 public class Room extends Attribute {
 
-	private String _name;
-	private String _description;
 	private ArrayList< Attribute > _attributes;
 	private ArrayList< Chest > _chests;
 	private ArrayList< Container > _containers;
 	private ArrayList< Door > _doors;
+	
 	
 	Room( String name , String description ){
 		
@@ -23,7 +22,6 @@ public class Room extends Attribute {
 	/*
 	 *  following methods add objects to room;
 	 */
-	
 	public void add(Attribute a){
 		_attributes.add(a);
 	}
@@ -37,19 +35,9 @@ public class Room extends Attribute {
 		_doors.add(door);
 	}
 	
-	public ArrayList<Attribute> attributes(){
-		return _attributes;
-	}
-	public ArrayList<Chest> chests(){
-		return _chests;
-	}
-	
-	public ArrayList<Container> containers(){
-		return _containers;
-	}
-	public ArrayList<Door> doors(){
-		return _doors;
-	}
-	
-	
+	// data acsessing methods
+	public ArrayList<Attribute> attributes(){return _attributes;}
+	public ArrayList<Chest> chests(){return _chests;}
+	public ArrayList<Container> containers(){return _containers;}
+	public ArrayList<Door> doors(){return _doors;}
 }
