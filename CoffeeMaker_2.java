@@ -56,10 +56,21 @@ public class CoffeeMaker_2 {
 		
 		Scanner scanner = new Scanner(System.in);
 	
+		String scan = scanner.nextLine();
+		
+		String split[] = scan.split(" ",2);
+		
+		System.out.println("->"+split[0]);
+
+		
+		
+		//if (split[1].equalsIgnoreCase(""))
+			System.out.println("NOTHING");
+		
 		System.out.println("\n----------------------------------------");
 		
 		Hero hero = new Hero(world);
-		hero.start();
+		//hero.start();
 		
 		
 	}
